@@ -19,6 +19,7 @@ public class CustomerController {
 
     @GetMapping ("/customers")
     public List<Customer> GetCustomers(){
+
         return iCustomerRepository.findAll();
     }
 
