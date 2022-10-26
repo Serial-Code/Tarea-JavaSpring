@@ -5,7 +5,6 @@ import lombok.Getter;
 import lombok.Setter;
 
 import javax.persistence.*;
-import java.awt.*;
 
 @Entity
 @Table(name = "product")
@@ -23,8 +22,8 @@ public class Product {
     @Column(nullable = false)
     private double price;
 
-    @Column(columnDefinition = "TEXT")
-    private TextArea description;
+    @Column(columnDefinition = "text")
+    private String description;
 
     @Column(nullable = false)
     private int quantity;
@@ -34,15 +33,4 @@ public class Product {
     @JsonBackReference
     private Supplier supplier;
 
-    public Product(Long id, String name, double price, TextArea description, int quantity, Supplier supplier) {
-        this.id = id;
-        this.name = name;
-        this.price = price;
-        this.description = description;
-        this.quantity = quantity;
-        this.supplier = supplier;
-    }
-
-    public Product() {
-    }
 }
