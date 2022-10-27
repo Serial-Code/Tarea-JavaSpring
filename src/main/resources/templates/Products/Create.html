@@ -1,21 +1,25 @@
 <!DOCTYPE html>
-<html xmlns:th="http://www.thymeleaf.org" lang="en">
+<html xmlns:th="http://www.thymeleaf.org" lang="en"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      layout:decorate="~{layout}">
 <head>
     <meta charset="UTF-8">
     <title>Title</title>
 </head>
 <body>
+<div layout:fragment="content">
 <form method="post" th:action="@{/products/save}" th:object="${product}">
-  <input placeholder="name" type="text" name="" required th:field="*{name}"><br>
-<textarea  th:field="*{description}" placeholder="Description" required></textarea><br>
-      <input type="number" required th:field="*{price}"><br>
-      <input type="number" required th:field="*{quantity}"><br>
-    <select th:field="*{supplier}" required>
+  <input class="form-control" placeholder="name" type="text" name="" required th:field="*{name}"><br>
+<textarea class="form-control" th:field="*{description}" placeholder="Description" required></textarea><br>
+      <input class="form-control" type="number" required th:field="*{price}"><br>
+      <input class="form-control" type="number" required th:field="*{quantity}"><br>
+    <select class="form-control"  th:field="*{supplier}" required>
     <th:block th:each="supplier: ${suppliers} ">
         <option th:text="${supplier.name}" th:value="${supplier.id}"></option>
     </th:block>
-</select>
-<input type="submit" value="Save">
+</select><br>
+<input class="btn btn-primary" type="submit" value="Save">
 </form>
+</div>
 </body>
 </html>

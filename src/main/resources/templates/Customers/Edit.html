@@ -9,10 +9,10 @@
 <body>
 <div layout:fragment="content">
 <form method="post" th:action="@{/customers/edit/{id}(id=${customer.id})}" th:object="${customer}">
-    <input th:field="*{name}" type="text" placeholder="Name" required>
-    <input th:field="*{email}" type="email" placeholder="Email" required>
-    <input th:field="*{document}" type="number" placeholder="Document" required>
-    <input type="submit" value="Save">
+    <input class="form-control" th:field="*{name}" type="text" placeholder="Name" required><br>
+    <input class="form-control" th:field="*{email}" type="email" placeholder="Email" required><br>
+    <input class="form-control" th:field="*{document}" type="number" placeholder="Document" required><br>
+    <input class="btn btn-primary" type="submit" value="Save">
 
 </form>
 </div>

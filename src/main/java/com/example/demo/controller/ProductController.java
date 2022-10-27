@@ -7,7 +7,9 @@ import com.example.demo.repository.ISupplierRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 
 import java.util.List;
@@ -44,6 +46,27 @@ public class ProductController {
     @PostMapping("/products/save")
     public String SaveProduct(Product product){
         iProductRepository.save(product);
+        return "redirect:/products";
+    }
+
+    @GetMapping("/products/edit/{id}")
+    public String ShowUpdateProduct (Model model, @PathVariable long id){
+        List<Supplier> suppliers = iSupplierRepository.findAll();
+        Product product = iProductRepository.findById(id).get();
+        model.addAttribute("product",product);
+        model.addAttribute("suppliers", suppliers);
+        return "Products/Edit";
+    }
+
+    @PostMapping("/products/edit/{id}")
+    public String UpdateProduct (@PathVariable long id, Product product){
+        iProductRepository.save(product);
+        return "redirect:/products";
+    }
+
+    @GetMapping("/products/delete/{id}")
+    public String DeleteProduct (@PathVariable Long id){
+        iProductRepository.deleteById(id);
         return "redirect:/products";
     }
 
