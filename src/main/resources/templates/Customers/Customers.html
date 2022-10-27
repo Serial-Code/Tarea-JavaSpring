@@ -9,7 +9,7 @@
 </head>
 <body>
 <div layout:fragment="content">
-    <table>
+    <table class="table">
         <thead>
         <tr>
             <th>Name</th>
@@ -25,10 +25,10 @@
             <td th:text="${customer.email}"></td>
             <td th:text="${customer.document}"></td>
             <td>
-                <a th:href="@{'/customers/edit/' + ${customer.id }}">Edit</a>
+                <a class="btn btn-primary" th:href="@{'/customers/edit/' + ${customer.id }}">Edit</a>
             </td>
             <td>
-                <a th:href="@{'/customers/delete/' + ${customer.id }}">Delete</a>
+                <a class="btn btn-danger" th:href="@{'/customers/delete/' + ${customer.id }}">Delete</a>
             </td>
         </tr>
         </tbody>

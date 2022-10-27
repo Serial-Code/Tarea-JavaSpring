@@ -1,11 +1,14 @@
 <!DOCTYPE html>
-<html xmlns:th="http://www.thymeleaf.org"  lang="en">
+<html xmlns:th="http://www.thymeleaf.org"  lang="en"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      layout:decorate="~{layout}">
 <head>
     <meta charset="UTF-8">
     <title>Title</title>
 </head>
 <body>
-<table>
+<div layout:fragment="content">
+<table class="table">
     <thead>
     <tr>
         <th>Name</th>
@@ -13,6 +16,8 @@
         <th>Price</th>
         <th>Quantity</th>
         <th>Supplier</th>
+        <th>Edit</th>
+        <th>Delete</th>
     </tr>
     </thead>
     <tbody>
@@ -22,8 +27,15 @@
         <td th:text="${product.price}"></td>
         <td th:text="${product.quantity}"></td>
         <td th:text="${product.supplier.name}"></td>
+        <td>
+            <a class="btn btn-primary" th:href="@{'/products/edit/' + ${product.id }}">Edit</a>
+        </td>
+        <td>
+            <a class="btn btn-danger" th:href="@{'/products/delete/' + ${product.id }}">Delete</a>
+        </td>
     </tr>
     </tbody>
 </table>
+</div>
 </body>
 </html>
